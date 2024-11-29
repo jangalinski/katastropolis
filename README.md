@@ -2,6 +2,7 @@
 
 A place where my mind wanders to solve coding-katas and -challenges - using kotlin.
 
+![katastroplis](src/main/resources/banner.jpeg)
 
 ## Everybody Codes
 

@@ -11,4 +11,9 @@ object Katastropolis {
   }
 
   fun <T> Iterable<T>.println(): List<T> = peek(::println)
+
+
+  fun Int.even() = this % 2 == 0
+  fun Int.odd() = !even()
+
 }
