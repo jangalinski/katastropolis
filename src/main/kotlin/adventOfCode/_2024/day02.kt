@@ -1,6 +1,5 @@
 package io.github.jangalinski.kata.adventOfCode._2024
 
-import io.github.jangalinski.kata.Katastropolis.println
 import io.github.jangalinski.kata.adventOfCode.AoCUtil
 import io.github.jangalinski.kata.adventOfCode.AoCUtil.StringExt.intValues
 import kotlin.math.abs
@@ -11,7 +10,7 @@ fun main() {
     .nonEmptyLines.map { it.intValues() }
 
   fun validate(ints: List<Int>) : Boolean {
-    val w = ints.windowed(2).map { it -> it[0]-it[1] }
+    val w = ints.zipWithNext { a,b -> a-b }
     val contains0 = w.contains(0)
     val changesDirection = w.map { it.sign  }.distinct().size !=1
     val toHighMax = w.maxOf(::abs) > 3

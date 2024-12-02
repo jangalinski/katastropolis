@@ -4,6 +4,13 @@ A place where my mind wanders to solve coding-katas and -challenges - using kotl
 
 ![katastroplis](src/main/resources/banner.jpeg)
 
+## Advent Of Code
+
+### 2024
+
+* https://adventofcode.com/2024
+* [01](./src/main/kotlin/adventOfCode/_2024/day01.kt),[02](./src/main/kotlin/adventOfCode/_2024/day02.kt)
+
 ## Everybody Codes
 
 ### The Kingdom of Algorithmia (2024)

@@ -2,7 +2,6 @@ package io.github.jangalinski.kata.adventOfCode._2024
 
 import io.github.jangalinski.kata.adventOfCode.AoCUtil
 import io.github.jangalinski.kata.adventOfCode.AoCUtil.StringExt.intValues
-import kotlin.collections.unzip
 import kotlin.math.abs
 
 fun main() {
