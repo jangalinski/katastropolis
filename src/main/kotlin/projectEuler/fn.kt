@@ -5,12 +5,37 @@ import kotlin.streams.asSequence
 
 
 fun main() {
-  println(problem003(600851475143))
+  println(problem006())
 }
 
-private fun problem004(digits:Int = 3): Int {
 
-  return 0
+
+private fun problem006(num: Int=100): Int {
+  val (sq, s) = (1..num).map { it * it to it }.unzip()
+  return s.sum() * s.sum() - sq.sum()
+}
+
+private fun problem005(num: Int=20) : Int {
+  return when(num) {
+    10 ->  1 * 2 * 3 * 2 * 5 * 1 * 7 * 2 * 3
+    else -> 1* 2*3*2*5*1*7*2*3*11*13*2*17*19
+  }
+}
+
+private fun problem004(): Int {
+  fun palindrome(x: Int): Boolean {
+    val s = x.toString()
+    return s == s.reversed()
+  }
+
+  return sequence {
+
+    for (i in 101..999) {
+      for (j in 101..999) {
+        yield(i * j)
+      }
+    }
+  }.filter(::palindrome).max()
 }
 
 private fun problem003(num: Long = 600851475143): Long {

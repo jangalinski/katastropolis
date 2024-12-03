@@ -16,3 +16,7 @@ A place where my mind wanders to solve coding-katas and -challenges - using kotl
 ### The Kingdom of Algorithmia (2024)
 
 * https://everybody.codes/event/2024/oracle-of-the-order
+
+### Project Euler
+
+* https://projecteuler.net/progress
