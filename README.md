@@ -9,7 +9,7 @@ A place where my mind wanders to solve coding-katas and -challenges - using kotl
 ### 2024
 
 * https://adventofcode.com/2024
-* [01](./src/main/kotlin/adventOfCode/_2024/day01.kt),[02](./src/main/kotlin/adventOfCode/_2024/day02.kt)
+* [01](./src/main/kotlin/adventOfCode/_2024/day01.kt),[02](./src/main/kotlin/adventOfCode/_2024/day02.kt),[03](./src/main/kotlin/adventOfCode/_2024/day03.kt)
 
 ## Everybody Codes
 
