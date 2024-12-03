@@ -1,31 +1,30 @@
 package io.github.jangalinski.kata.adventOfCode._2024
 
 import io.github.jangalinski.kata.adventOfCode.AoCUtil
-import java.util.regex.MatchResult
-import java.util.regex.Pattern
 
 fun main() {
+  operator fun MatchResult.get(name: String): Long = this.groups[name]?.value?.toLong() ?: 0L
 
-
-  fun readAndMatch(test: Boolean = false, pattern: Pattern):List<MatchResult> = AoCUtil.Input(year = 2024, day = 3, part = 1, test = test)
+  fun readAndMatch(test: Boolean = false, regex: Regex): List<MatchResult> = AoCUtil.Input(year = 2024, day = 3, part = 1, test = test)
     .nonEmptyLines
-    .flatMap { pattern.matcher(it).results().toList() }
+    .flatMap { regex.findAll(it) }
+
 
   fun silver(test: Boolean = false): Long {
-    return readAndMatch(test, """mul\((\d+),(\d+)\)""".toPattern())
-      .map { it.group(1).toLong() to it.group(2).toLong() }
+    return readAndMatch(test, """mul\((?<a>\d{1,3}),(?<b>\d{1,3})\)""".toRegex())
+      .map { it["a"] to it["b"] }
       .sumOf { it.first * it.second }
   }
 
   fun gold(test: Boolean = false): Long {
-    val r = """do\(\)|don't\(\)|mul\((\d+),(\d+)\)""".toRegex().toPattern()
-    val l = AoCUtil.Input(year = 2024, day = 3, part = 1, test = test).nonEmptyLines
-      .flatMap { r.matcher(it).results().toList() }
+    val r = """do(n't)?\(\)|mul\((?<a>\d+),(?<b>\d+)\)""".toRegex()
+
+    val l = readAndMatch(test, r)
       .map {
-        when (it.group()) {
+        when (it.value) {
           "don't()" -> false to 0L
           "do()" -> true to 0L
-          else -> null to (it.group(1).toLong() * it.group(2).toLong())
+          else -> null to it["a"] * it["b"]
         }
       }
 
@@ -35,7 +34,6 @@ fun main() {
     }.second
   }
 
-  println(gold())
-  println(silver(true))
   println(silver())
+  println(gold())
 }
