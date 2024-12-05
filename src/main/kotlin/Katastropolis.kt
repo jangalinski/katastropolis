@@ -1,5 +1,11 @@
 package io.github.jangalinski.kata
 
+import io.toolisticon.lib.krid.Krid
+import io.toolisticon.lib.krid.Krids
+import io.toolisticon.lib.krid.fn.IndexTransformer
+import io.toolisticon.lib.krid.model.*
+import io.toolisticon.lib.krid.model.step.Direction
+
 object Katastropolis {
 
 
@@ -83,4 +89,92 @@ object Katastropolis {
     println(n)
   }
 
+  object KridExt {
+
+    fun <E : Any> Row<E>.cellValues(): List<CellValue<E>> = values.mapIndexed { x, v -> CellValue<E>(x, index, v) }
+    fun <E : Any> Column<E>.cellValues(): List<CellValue<E>> = values.mapIndexed { y, v -> CellValue<E>(index, y, v) }
+
+    fun <E : Any> krid(dimension: Dimension, emptyValue: E, cellValues: List<CellValue<E>>): Krid<E> {
+      return Krids.krid(
+        dimension = dimension,
+        emptyElement = emptyValue,
+        initialize = { x, y ->
+          cellValues.first { it.x == x && it.y == y }.value
+        }
+      )
+    }
+
+
+    fun <E> krid(columns: Columns<E>, emptyElement: E): Krid<E> {
+      require(columns.isNotEmpty()) { "columns must not be empty: $columns" }
+      require(columns.none { it.isEmpty() }) { "no columns must be empty: $columns" }
+      require(columns.maxOf { it.size } == columns.minOf { it.size }) { "all columns must have same size: $columns" }
+
+      val dimension = Dimension(width = columns.size, height = columns[0].size)
+
+      val list = buildList<E> {
+        columns.sortedBy { it.index }.forEach { col ->
+          dimension.rowRange.forEach { index ->
+            add(col[index])
+          }
+        }
+      }
+
+      return Krid(
+        dimension = dimension,
+        emptyElement = emptyElement,
+        list = list
+      )
+    }
+
+    val Krid<*>.indexTransformer: IndexTransformer get() = IndexTransformer(this.width)
+
+//fun <E:Any> krid(krid : Krid<E>,)
+
+    infix fun Cell.inSameRow(b: Cell) = y == b.y
+    infix fun Cell.inSameColumn(b: Cell) = x == b.x
+
+    infix fun Cell.isAdjacent(other: Cell) = adjacent.contains(other)
+    infix fun Cell.isAdjacentOrEqual(other: Cell) = this == other || adjacent.contains(other)
+
+    /**
+     * Only combine UP/DOWN with LEFT/RIGHT (and NONE)
+     */
+    infix fun Direction.combine(other: Direction): Direction = when (this) {
+      Direction.NONE -> other
+      Direction.UP -> when (other) {
+        Direction.RIGHT -> Direction.UP_RIGHT
+        Direction.LEFT -> Direction.UP_LEFT
+        Direction.NONE -> this
+        else -> throw IllegalArgumentException("$this can only be combined with LEFT/RIGHT/NONE.")
+      }
+
+      Direction.DOWN -> when (other) {
+        Direction.LEFT -> Direction.DOWN_LEFT
+        Direction.RIGHT -> Direction.DOWN_RIGHT
+        Direction.NONE -> this
+        else -> throw IllegalArgumentException("$this can only be combined with LEFT/RIGHT/NONE.")
+      }
+
+      Direction.RIGHT -> when (other) {
+        Direction.UP -> Direction.UP_RIGHT
+        Direction.DOWN -> Direction.DOWN_RIGHT
+        Direction.NONE -> this
+        else -> throw IllegalArgumentException("$this can only be combined with UP/DOWN/NONE.")
+      }
+
+      Direction.LEFT -> when (other) {
+        Direction.UP -> Direction.UP_LEFT
+        Direction.DOWN -> Direction.DOWN_LEFT
+        Direction.NONE -> this
+        else -> throw IllegalArgumentException("$this can only be combined with UP/DOWN/NONE.")
+      }
+
+      else -> throw IllegalArgumentException("combine only works with vertical + horizontal, no mix allowed.")
+    }
+
+    fun Cell.beam(direction: Direction, includeStart: Boolean = false) = direction.beam(this, includeStart)
+    fun Cell.take(direction: Direction, num: Int, includeStart: Boolean = false) = beam(direction, includeStart).take(num).toList()
+
+  }
 }

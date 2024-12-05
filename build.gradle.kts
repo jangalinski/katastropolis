@@ -5,3 +5,7 @@ plugins {
 apply {
   from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
 }
+
+dependencies {
+  implementation(libs.krid)
+}

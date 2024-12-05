@@ -16,9 +16,14 @@ object AoCUtil {
       return a.trim() to b.trim()
     }
 
+    fun String.toIntPair(splitter: String): Pair<Int, Int> {
+      val p = this.toPair(splitter)
+      return p.first.toInt() to p.second.toInt()
+    }
+
     fun String.splitTrimmed(splitter: String): List<String> = this.split(splitter).map { it.trim() }.filterNot(String::isEmpty)
 
-    fun String.intValues() = this.split("""\s+""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toInt() }
+    fun String.intValues() = this.split("""[\s+, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toInt() }
     fun String.longValues() = this.split("""[, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toLong() }
     fun String.doubleValues() = this.split("""[, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toDouble() }
   }
