@@ -5,6 +5,15 @@ import io.toolisticon.lib.krid.Krids
 import io.toolisticon.lib.krid.fn.IndexTransformer
 import io.toolisticon.lib.krid.model.*
 import io.toolisticon.lib.krid.model.step.Direction
+import io.toolisticon.lib.krid.model.step.Direction.DOWN
+import io.toolisticon.lib.krid.model.step.Direction.DOWN_LEFT
+import io.toolisticon.lib.krid.model.step.Direction.DOWN_RIGHT
+import io.toolisticon.lib.krid.model.step.Direction.LEFT
+import io.toolisticon.lib.krid.model.step.Direction.NONE
+import io.toolisticon.lib.krid.model.step.Direction.RIGHT
+import io.toolisticon.lib.krid.model.step.Direction.UP
+import io.toolisticon.lib.krid.model.step.Direction.UP_LEFT
+import io.toolisticon.lib.krid.model.step.Direction.UP_RIGHT
 
 object Katastropolis {
 
@@ -141,32 +150,32 @@ object Katastropolis {
      * Only combine UP/DOWN with LEFT/RIGHT (and NONE)
      */
     infix fun Direction.combine(other: Direction): Direction = when (this) {
-      Direction.NONE -> other
-      Direction.UP -> when (other) {
-        Direction.RIGHT -> Direction.UP_RIGHT
-        Direction.LEFT -> Direction.UP_LEFT
-        Direction.NONE -> this
+      NONE -> other
+      UP -> when (other) {
+        RIGHT -> UP_RIGHT
+        LEFT -> UP_LEFT
+        NONE -> this
         else -> throw IllegalArgumentException("$this can only be combined with LEFT/RIGHT/NONE.")
       }
 
-      Direction.DOWN -> when (other) {
-        Direction.LEFT -> Direction.DOWN_LEFT
-        Direction.RIGHT -> Direction.DOWN_RIGHT
-        Direction.NONE -> this
+      DOWN -> when (other) {
+        LEFT -> DOWN_LEFT
+        RIGHT -> DOWN_RIGHT
+        NONE -> this
         else -> throw IllegalArgumentException("$this can only be combined with LEFT/RIGHT/NONE.")
       }
 
-      Direction.RIGHT -> when (other) {
-        Direction.UP -> Direction.UP_RIGHT
-        Direction.DOWN -> Direction.DOWN_RIGHT
-        Direction.NONE -> this
+      RIGHT -> when (other) {
+        UP -> UP_RIGHT
+        DOWN -> DOWN_RIGHT
+        NONE -> this
         else -> throw IllegalArgumentException("$this can only be combined with UP/DOWN/NONE.")
       }
 
-      Direction.LEFT -> when (other) {
-        Direction.UP -> Direction.UP_LEFT
-        Direction.DOWN -> Direction.DOWN_LEFT
-        Direction.NONE -> this
+      LEFT -> when (other) {
+        UP -> UP_LEFT
+        DOWN -> DOWN_LEFT
+        NONE -> this
         else -> throw IllegalArgumentException("$this can only be combined with UP/DOWN/NONE.")
       }
 
@@ -176,5 +185,19 @@ object Katastropolis {
     fun Cell.beam(direction: Direction, includeStart: Boolean = false) = direction.beam(this, includeStart)
     fun Cell.take(direction: Direction, num: Int, includeStart: Boolean = false) = beam(direction, includeStart).take(num).toList()
 
+    fun Direction.turn(direction: Direction) : Direction{
+      require(direction in setOf(LEFT, RIGHT)) {"Only Left/Right is allowed: $direction"}
+      return when (this) {
+        UP -> if (RIGHT == direction) RIGHT else LEFT
+        UP_RIGHT -> TODO()
+        RIGHT -> if (RIGHT == direction) DOWN else UP
+        DOWN_RIGHT -> TODO()
+        DOWN -> if (RIGHT == direction) LEFT else RIGHT
+        DOWN_LEFT -> TODO()
+        LEFT -> if (RIGHT == direction) UP else DOWN
+        UP_LEFT -> TODO()
+        NONE -> NONE
+      }
+    }
   }
 }

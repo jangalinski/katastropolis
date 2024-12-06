@@ -2,6 +2,8 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 [versions]
 krid = "0.0.2-SNAPSHOT"
+aocKotlin = "1.1.2"
 
 [libraries]
 krid = { module = "io.toolisticon.lib:krid", version.ref = "krid" }
+aocKotlin = { module = "com.toldoven.aoc:aoc-kotlin-notebook", version.ref = "aocKotlin" }
