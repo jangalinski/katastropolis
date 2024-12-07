@@ -17,6 +17,10 @@ import io.toolisticon.lib.krid.model.step.Direction.UP_RIGHT
 
 object Katastropolis {
 
+  fun <T> List<T>.head(): Pair<T, List<T>> = toMutableList().let {
+    val head = it.removeFirst()
+    head to it.toList()
+  }
 
   inline fun <T> Iterable<T>.peek(crossinline action: (T) -> Unit): List<T> {
     return map {

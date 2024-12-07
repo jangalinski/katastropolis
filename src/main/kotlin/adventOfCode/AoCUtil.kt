@@ -1,7 +1,5 @@
 package io.github.jangalinski.kata.adventOfCode
 
-import io.github.jangalinski.kata.adventOfCode.AoCUtil.ListExt.peekPrint
-import io.github.jangalinski.kata.adventOfCode.AoCUtil.ListExt.permutations
 import io.github.jangalinski.kata.adventOfCode.AoCUtil.StringExt.chunkedByEmpty
 
 object AoCUtil {
@@ -23,7 +21,7 @@ object AoCUtil {
 
     fun String.splitTrimmed(splitter: String): List<String> = this.split(splitter).map { it.trim() }.filterNot(String::isEmpty)
 
-    fun String.intValues() = this.split("""[\s+, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toInt() }
+    fun String.intValues() = this.split("""[\s+,: ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toInt() }
     fun String.longValues() = this.split("""[, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toLong() }
     fun String.doubleValues() = this.split("""[, ]""".toRegex()).map { it.trim() }.filterNot { it.isBlank() }.map { it.toDouble() }
   }
@@ -109,10 +107,4 @@ object AoCUtil {
       yield(n)
     }
   }
-}
-
-fun main(args: Array<String>) {
-  val l = listOf(0 to 1, 2 to 3, 3 to 4)
-  val p = l.permutations()
-  p.peekPrint()
 }
