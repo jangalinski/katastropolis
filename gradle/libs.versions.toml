@@ -1,9 +1,12 @@
 [versions]
 aoc-kotlin = "1.1.2"
 arrow = "2.0.0"
+flexmark = "0.64.8"
 kotlin = "2.1.0"
 kotlinx-benchmark = "0.4.13"
 krid = "0.0.2-SNAPSHOT"
+junit = "5.11.3"
+
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -15,5 +18,11 @@ kotlinx-benchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "kot
 aoc-kotlin = { group = "com.toldoven.aoc", name = "aoc-kotlin-notebook", version.ref = "aoc-kotlin" }
 arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrow" }
 arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", version.ref = "arrow" }
+
+flexmark-html2md-converter = { group = "com.vladsch.flexmark", name = "flexmark-html2md-converter", version.ref = "flexmark" }
+
 kotlinx-benchmark-runtime = { group = "org.jetbrains.kotlinx", name = "kotlinx-benchmark-runtime", version.ref = "kotlinx-benchmark" }
 krid = { group = "io.toolisticon.lib", name = "krid", version.ref = "krid" }
+
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit" }
