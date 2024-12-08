@@ -1,4 +1,4 @@
-package io.github.jangalinski.kata.everybodycodes._2024
+package io.github.jangalinski.kata.everybody_codes._2024
 
 object Quest01 {
 

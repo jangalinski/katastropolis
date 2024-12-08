@@ -1,7 +1,33 @@
-package io.github.jangalinski.kata.adventOfCode._2024
+package io.github.jangalinski.kata.advent_of_code._2024
 
 import io.github.jangalinski.kata.Katastropolis.head
-import io.github.jangalinski.kata.adventOfCode.AoCUtil
+import io.github.jangalinski.kata.advent_of_code.AoCUtil
+import kotlinx.benchmark.Scope
+import org.openjdk.jmh.annotations.Benchmark
+import org.openjdk.jmh.annotations.Setup
+import org.openjdk.jmh.annotations.State
+
+@State(Scope.Benchmark)
+class Day07 {
+
+
+  private var data = 0.0
+
+  @Setup
+  fun setUp() {
+    data = 3.0
+  }
+
+  @Benchmark
+  fun sqrtBenchmark(): Double {
+    return Math.sqrt(data)
+  }
+
+  @Benchmark
+  fun cosBenchmark(): Double {
+    return Math.cos(data)
+  }
+}
 
 fun main() {
 

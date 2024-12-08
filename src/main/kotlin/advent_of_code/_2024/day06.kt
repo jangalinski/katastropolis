@@ -1,7 +1,7 @@
-package io.github.jangalinski.kata.adventOfCode._2024
+package io.github.jangalinski.kata.advent_of_code._2024
 
 import io.github.jangalinski.kata.Katastropolis.KridExt.turn
-import io.github.jangalinski.kata.adventOfCode.AoCUtil
+import io.github.jangalinski.kata.advent_of_code.AoCUtil
 import io.toolisticon.lib.krid.Krid
 import io.toolisticon.lib.krid.Krids.krid
 import io.toolisticon.lib.krid.getValue

@@ -1,12 +1,9 @@
-package io.github.jangalinski.kata.adventOfCode._2024
+package io.github.jangalinski.kata.advent_of_code._2024
 
 import io.github.jangalinski.kata.Katastropolis.KridExt.take
-import io.github.jangalinski.kata.adventOfCode.AoCUtil
-import io.github.jangalinski.kata.adventOfCode.AoCUtil.ListExt.peekPrint
+import io.github.jangalinski.kata.advent_of_code.AoCUtil
 import io.toolisticon.lib.krid.Krid
-import io.toolisticon.lib.krid.Krids.cell
 import io.toolisticon.lib.krid.Krids.krid
-import io.toolisticon.lib.krid.ascii
 import io.toolisticon.lib.krid.get
 import io.toolisticon.lib.krid.getValue
 import io.toolisticon.lib.krid.model.Cell

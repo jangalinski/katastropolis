@@ -1,6 +1,7 @@
-package io.github.jangalinski.kata.adventOfCode._2024
+package io.github.jangalinski.kata.advent_of_code._2024
 
-import io.github.jangalinski.kata.adventOfCode.AoCUtil
+import io.github.jangalinski.kata.advent_of_code.AoCUtil
+import kotlin.text.get
 
 fun main() {
   operator fun MatchResult.get(name: String): Long = this.groups[name]?.value?.toLong() ?: 0L

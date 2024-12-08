@@ -1,4 +1,4 @@
-package io.github.jangalinski.kata.projectEuler
+package io.github.jangalinski.kata.project_euler
 
 import java.util.stream.IntStream
 import kotlin.streams.asSequence

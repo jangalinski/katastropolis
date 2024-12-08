@@ -1,6 +1,6 @@
-package io.github.jangalinski.kata.adventOfCode
+package io.github.jangalinski.kata.advent_of_code
 
-import io.github.jangalinski.kata.adventOfCode.AoCUtil.StringExt.chunkedByEmpty
+import io.github.jangalinski.kata.advent_of_code.AoCUtil.StringExt.chunkedByEmpty
 
 object AoCUtil {
 

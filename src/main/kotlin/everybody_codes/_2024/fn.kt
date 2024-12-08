@@ -1,4 +1,4 @@
-package io.github.jangalinski.kata.everybodyCodes._2024
+package io.github.jangalinski.kata.everybody_codes._2024
 
 private val potionsPerFoe = mapOf(
   'A' to 0,

@@ -1,8 +1,6 @@
-package io.github.jangalinski.kata.everybodyCodes_2024
+package io.github.jangalinski.kata.everybody_codes._2024
 
 import java.util.regex.Pattern
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.contract
 
 fun main() {
 
