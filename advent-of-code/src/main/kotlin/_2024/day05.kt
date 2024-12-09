@@ -1,19 +1,18 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.Katastropolis.odd
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
-import io.github.jangalinski.kata.advent_of_code.AoCUtil.StringExt.intValues
-import io.github.jangalinski.kata.advent_of_code.AoCUtil.StringExt.toIntPair
+import io.github.jangalinski.kata.aoc.AocUtil.Input
+import io.github.jangalinski.kata.aoc.AocUtil.StringExt.intValues
+import io.github.jangalinski.kata.aoc.AocUtil.StringExt.toIntPair
 
 fun main() {
   fun read(test: Boolean = false): Pair<List<Pair<Int, Int>>, List<List<Int>>> {
-    val (por, updates) = AoCUtil.Input(year = 2024, day = 5, part = 1, test = test).linesChunkedByEmpty()
+    val (por, updates) = Input(year = 2024, day = 5, part = 1, test = test).linesChunkedByEmpty()
 
     return por.map(String::trim).map { it.toIntPair("|") } to updates.map { it.intValues() }
   }
 
   fun middleNumber(ints: List<Int>): Int {
-    require(ints.size.odd()) { "$ints contains even number of elements." }
+    require(ints.size % 2 != 0) { "$ints contains even number of elements." }
     return ints[ints.size / 2]
   }
 

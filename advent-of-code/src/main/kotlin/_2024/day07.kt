@@ -1,7 +1,7 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.Katastropolis.head
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
+import io.github.jangalinski.kata.aoc.AocUtil.Input
+import io.github.jangalinski.kata.aoc.AocUtil.ListExt.head
 import kotlinx.benchmark.Scope
 import org.openjdk.jmh.annotations.Benchmark
 import org.openjdk.jmh.annotations.Setup
@@ -68,7 +68,7 @@ fun main() {
       292: 11 6 16 20
     """.trimIndent().lines()
     } else {
-      AoCUtil.Input(year = 2024, day = 7, part = 1, false).nonEmptyLines
+      Input(year = 2024, day = 7, part = 1, false).nonEmptyLines
     }.map { it.trim() }.filterNot { it.isEmpty() }
       .map { it.split("""\D+""".toRegex()).map(String::toLong) }
       .map { it.head() }

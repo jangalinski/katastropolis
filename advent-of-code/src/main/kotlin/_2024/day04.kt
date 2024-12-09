@@ -1,9 +1,9 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.Katastropolis.KridExt.take
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
+import io.github.jangalinski.kata.aoc.AocUtil.Input
+import io.github.jangalinski.kata.aoc.AocUtil.KridExt.take
 import io.toolisticon.lib.krid.Krid
-import io.toolisticon.lib.krid.Krids.krid
+import io.toolisticon.lib.krid.Krids
 import io.toolisticon.lib.krid.get
 import io.toolisticon.lib.krid.getValue
 import io.toolisticon.lib.krid.model.Cell
@@ -13,9 +13,9 @@ import io.toolisticon.lib.krid.model.step.Direction
 fun main() {
 
   fun read(test: Boolean = false, empty: Char = '.'): Krid<Char> {
-    val rows = AoCUtil.Input(year = 2024, day = 4, part = 1, test = test)
+    val rows = Input(year = 2024, day = 4, part = 1, test = test)
       .nonEmptyLines.map { it.toList().map { it -> if (it == 'X') '.' else it } }
-    return krid(rows, empty)
+    return Krids.krid(rows, empty)
   }
 
   fun Cell.take(direction: Direction, count: Int): List<Cell> = this.take(direction, count, true)
@@ -70,7 +70,7 @@ fun main() {
 
       .toList()
 
-    aas.forEach { println(it)  }
+    aas.forEach { println(it) }
 
     return aas.count()
   }

@@ -1,3 +1,5 @@
+import kotlinx.benchmark.gradle.JvmBenchmarkTarget
+
 plugins {
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.kotlin.allopen)

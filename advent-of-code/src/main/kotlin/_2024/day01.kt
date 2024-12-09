@@ -1,12 +1,12 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
-import io.github.jangalinski.kata.advent_of_code.AoCUtil.StringExt.intValues
+import io.github.jangalinski.kata.aoc.AocUtil.Input
+import io.github.jangalinski.kata.aoc.AocUtil.StringExt.intValues
 import kotlin.math.abs
 
 fun main() {
   fun read(test: Boolean = false): Pair<List<Int>, List<Int>> {
-    val linesAsInts = AoCUtil.Input(year = 2024, day = 1, part = 1, test = test).nonEmptyLines
+    val linesAsInts = Input(year = 2024, day = 1, part = 1, test = test).nonEmptyLines
       .map { it -> it.intValues() }
       .map { it[0] to it[1]  }
     return linesAsInts.map {it.first}.sorted() to  linesAsInts.map {it.second}.sorted()

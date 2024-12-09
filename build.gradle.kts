@@ -1,7 +1,11 @@
 import kotlinx.benchmark.gradle.JvmBenchmarkTarget
 
-apply {
-  from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
+allprojects {
+  apply {
+    from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
+  }
+
+
 }
 
 plugins {

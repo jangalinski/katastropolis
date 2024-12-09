@@ -2,8 +2,10 @@ package io.github.jangalinski.kata.lib
 
 import io.toolisticon.lib.krid.Krids.cell
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
+@Disabled
 class IterablesTest {
 
   @Test

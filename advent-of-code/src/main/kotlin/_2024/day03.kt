@@ -1,12 +1,11 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
-import kotlin.text.get
+import io.github.jangalinski.kata.aoc.AocUtil.Input
 
 fun main() {
   operator fun MatchResult.get(name: String): Long = this.groups[name]?.value?.toLong() ?: 0L
 
-  fun readAndMatch(test: Boolean = false, regex: Regex): List<MatchResult> = AoCUtil.Input(year = 2024, day = 3, part = 1, test = test)
+  fun readAndMatch(test: Boolean = false, regex: Regex): List<MatchResult> = Input(year = 2024, day = 3, part = 1, test = test)
     .nonEmptyLines
     .flatMap { regex.findAll(it) }
 

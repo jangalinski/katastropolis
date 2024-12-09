@@ -1,7 +1,7 @@
-package io.github.jangalinski.kata.advent_of_code._2024
+package io.github.jangalinski.kata.aoc._2024
 
-import io.github.jangalinski.kata.Katastropolis.KridExt.turn
-import io.github.jangalinski.kata.advent_of_code.AoCUtil
+import io.github.jangalinski.kata.aoc.AocUtil.Input
+import io.github.jangalinski.kata.aoc.AocUtil.KridExt.turn
 import io.toolisticon.lib.krid.Krid
 import io.toolisticon.lib.krid.Krids.krid
 import io.toolisticon.lib.krid.getValue
@@ -12,7 +12,7 @@ import io.toolisticon.lib.krid.plus
 
 fun main() {
   fun read(test: Boolean = false): Pair<Krid<Char>, Pair<Direction, Cell>> {
-    val krid = krid(AoCUtil.Input(year = 2024, day = 6, part = 1, test = test).contentTrimmed, '.')
+    val krid = krid(Input(year = 2024, day = 6, part = 1, test = test).contentTrimmed, '.')
     return krid to krid.cellValues().single { it.value == '^' }.let { Direction.UP to it.cell }
   }
 
@@ -39,7 +39,7 @@ fun main() {
           true -> g.first.turn(RIGHT) to g.second
         }
       }
-    } .map { it.second }
+    }.map { it.second }
 
       .distinct()
       .count()
@@ -50,7 +50,7 @@ fun main() {
     val k = i.first
 
     // walk mace and return true if loop detected
-    fun walk(k: Krid<Char>, g: Pair<Direction, Cell>) : Boolean {
+    fun walk(k: Krid<Char>, g: Pair<Direction, Cell>): Boolean {
       var direction = g.first
       var position = g.second
       // if we pass a cell in the same direction we already did, it must be a loop
@@ -78,9 +78,9 @@ fun main() {
       return false
     }
 
-    return k.cellValues().filter { it.value != '#'  }
-      .map { k.plus(it.copy(value = '#') ) }
-      .filter { walk(it, i.second)  }
+    return k.cellValues().filter { it.value != '#' }
+      .map { k.plus(it.copy(value = '#')) }
+      .filter { walk(it, i.second) }
       .count()
   }
 
