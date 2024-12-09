@@ -20,3 +20,8 @@ A place where my mind wanders to solve coding-katas and -challenges - using kotl
 ### Project Euler
 
 * https://projecteuler.net/progress
+
+## Links/Resources
+
+* https://github.com/Zordid/adventofcode-kotlin-2024
+
