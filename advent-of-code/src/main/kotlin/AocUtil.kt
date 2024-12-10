@@ -240,3 +240,4 @@ object AocUtil {
 }
 
 typealias Chrid=Krid<Char>
+typealias IntKrid=Krid<Int>
