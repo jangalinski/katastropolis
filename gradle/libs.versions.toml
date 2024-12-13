@@ -17,6 +17,7 @@ kotlinx-benchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "kot
 [libraries]
 aoc-kotlin = { group = "com.toldoven.aoc", name = "aoc-kotlin-notebook", version.ref = "aoc-kotlin" }
 arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrow" }
+arrow-functions = { group = "io.arrow-kt", name = "arrow-functions", version.ref = "arrow" }
 arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", version.ref = "arrow" }
 
 flexmark-html2md-converter = { group = "com.vladsch.flexmark", name = "flexmark-html2md-converter", version.ref = "flexmark" }

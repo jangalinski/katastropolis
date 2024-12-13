@@ -13,6 +13,7 @@ plugins {
 dependencies {
   implementation(libs.arrow.core)
   implementation(libs.arrow.fx.coroutines)
+  implementation(libs.arrow.functions)
 
   implementation(libs.flexmark.html2md.converter)
 

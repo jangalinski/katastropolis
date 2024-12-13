@@ -4,11 +4,11 @@ allprojects {
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
   }
-
-
 }
 
 plugins {
+  base
+  idea
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.kotlin.allopen)
   alias(libs.plugins.kotlinx.benchmark)

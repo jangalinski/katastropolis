@@ -241,3 +241,6 @@ object AocUtil {
 
 typealias Chrid=Krid<Char>
 typealias IntKrid=Krid<Int>
+
+typealias IntPair = Pair<Int, Int>
+typealias LongPair = Pair<Long, Long>
