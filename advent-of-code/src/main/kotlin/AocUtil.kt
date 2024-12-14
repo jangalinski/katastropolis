@@ -23,6 +23,8 @@ import io.toolisticon.lib.krid.model.step.Direction.UP_RIGHT
 
 object AocUtil {
 
+  operator fun MatchResult.get(name: String): Long = this.groups[name]?.value?.toLong() ?: 0L
+
   object StringExt {
     fun String.nonEmptyLines() = lines().filterNot(String::isEmpty)
 

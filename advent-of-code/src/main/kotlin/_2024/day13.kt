@@ -1,14 +1,12 @@
 package io.github.jangalinski.kata.aoc._2024
 
 import arrow.core.MemoizedDeepRecursiveFunction
-import arrow.core.memoize
 import io.github.jangalinski.kata.aoc.AocUtil
 import io.github.jangalinski.kata.aoc.AocUtil.StringExt.chunkedByEmpty
 import io.github.jangalinski.kata.aoc.IntPair
 import io.toolisticon.lib.krid.model.Cell
 import io.toolisticon.lib.krid.model.step.CoordinatesStep
 import kotlin.math.min
-import kotlin.time.measureTimedValue
 
 fun main() {
   fun read(test: Boolean): List<Triple<CoordinatesStep, CoordinatesStep, Cell>> {
@@ -78,6 +76,4 @@ fun main() {
     if (n <= 1) return n
     return fibonacci(n - 1) + fibonacci(n - 2)
   }
-
-  MemoizedDeepRecursiveFunction
 }
