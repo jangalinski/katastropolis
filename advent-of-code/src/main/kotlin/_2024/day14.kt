@@ -122,14 +122,21 @@ fun main() {
     return c.filterNot { it.key == 0  }.map { it.value }.fold(1) { a,c -> a * c }
   }
 
-  fun gold(input: Bathroom, num : Int): String{
-    val n = input.step(num)
+  fun gold(input: Bathroom): Int{
+    fun unique(b: Bathroom) : Boolean {
+      val ps = b.robots.map { it.position }
+      return ps.size == ps.distinct().size
+    }
 
+    val s = generateSequence(input to 1) { it.first.step(1) to it.second+1 }
+      .first { (b,n) -> unique(b)}
 
-    return n.krid.ascii()
+    println(s.first.krid.ascii())
+
+    return s.second -1
   }
 
   val input = read(false)
 
-  println(gold(input, 10000))
+  println(gold(input))
 }

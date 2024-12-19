@@ -1,6 +1,5 @@
 package io.github.jangalinski.kata.aoc._2024
 
-import arrow.core.MemoizedDeepRecursiveFunction
 import io.github.jangalinski.kata.aoc.AocUtil
 import io.github.jangalinski.kata.aoc.AocUtil.StringExt.chunkedByEmpty
 import io.github.jangalinski.kata.aoc.IntPair
@@ -70,10 +69,5 @@ fun main() {
 
   val input = read(false)
 
-  //println(silver(input))
-
-  fun fibonacci(n: Int): Int {
-    if (n <= 1) return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
-  }
+  println(silver(input))
 }
