@@ -1,5 +1,6 @@
 package io.github.jangalinski.kata.aoc._2024
 
+import arrow.core.memoize
 import io.github.jangalinski.kata.aoc.AocUtil
 import io.github.jangalinski.kata.aoc.AocUtil.StringExt.chunkedByEmpty
 
@@ -27,33 +28,51 @@ fun main() {
     return pattern.single().split(", ") to designs.map { it.trim() }
   }
 
-  val input = read(false)
+  val input = read(true)
 
+  fun possible(s: String, patterns: Map<Char, List<String>>): Boolean {
+    if (s.isEmpty()) {
+      return true
+    }
+
+
+    val ps = (patterns[s.first()] ?: emptyList()).filter { s.startsWith(it) }
+    if (ps.isEmpty()) {
+      return false
+    }
+
+    return ps.map { possible(s.removePrefix(it), patterns) }
+      .reduce { a, b -> a || b }
+  }
+
+  val mPossible = ::possible.memoize()
 
   fun silver(input: Pair<List<String>, List<String>>): Int {
     val patterns = input.first.groupBy { it.first() }
 
-    val memoize = mutableMapOf<String, Boolean>().apply {
-      put("", true)
-      patterns.values.flatMap { it }.forEach { put(it, true) }
-    }
-
-    fun possible(s: String): Boolean {
-      if (memoize.contains(s)) {
-        return memoize[s]!!
-      }
-
-      val ps =( patterns[s.first()] ?: emptyList()).filter { s.startsWith(it) }
-      if (ps.isEmpty()) {
-        memoize.put(s, false)
-        return false
-      }
-
-      return memoize.getOrPut(s) {  ps.map { possible(s.removePrefix(it)) }.reduce { a, b -> a || b } }
-    }
-
-    return input.second.count { possible(it) }
+    return input.second.count { mPossible(it, patterns) }
   }
 
-  println(silver(input))
+  fun gold(input: Pair<List<String>, List<String>>): Int {
+    val patterns = input.first.groupBy { it.first() }
+
+    val possibles = input.second.filter { mPossible(it, patterns) }
+    println(possibles)
+
+    fun variants(s:String) : Int {
+      if (!mPossible(s, patterns) || s.isEmpty()) {
+        return 0
+      }
+      val ps = (patterns[s.first()] ?: emptyList()).filter { s.startsWith(it) }
+      if (ps.isEmpty()) {
+        return  0
+      }
+      return ps.sumOf { variants(it) }
+    }
+
+
+    return 0
+  }
+
+  println(gold(input))
 }
