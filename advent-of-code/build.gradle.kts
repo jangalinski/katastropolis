@@ -19,6 +19,8 @@ dependencies {
 
   implementation(libs.krid)
   implementation(libs.kotlinx.benchmark.runtime)
+  implementation(libs.kaliningraph)
+  implementation(libs.jgrapht.core)
 
   implementation(libs.aoc.kotlin)
 
