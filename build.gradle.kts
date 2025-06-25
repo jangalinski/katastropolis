@@ -1,8 +1,29 @@
 import kotlinx.benchmark.gradle.JvmBenchmarkTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
+
+group = "io.github.jangalinski.kata"
+version = "0.0.1-SNAPSHOT"
 
 allprojects {
   apply {
     from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
+  }
+
+  plugins.withType<JavaPlugin> {
+    extensions.configure<JavaPluginExtension>("java") {
+      toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+      }
+    }
+  }
+  plugins.withType<KotlinPluginWrapper> {
+    extensions.configure<KotlinJvmProjectExtension>("kotlin") {
+      jvmToolchain(21)
+      compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict")
+      }
+    }
   }
 }
 
@@ -49,10 +70,6 @@ benchmark {
       jmhVersion = "1.21"
     }
   }
-}
-
-kotlin {
-  jvmToolchain(17)
 }
 
 tasks.test {
