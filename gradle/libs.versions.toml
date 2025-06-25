@@ -7,7 +7,7 @@ kotlin = "2.2.0"
 kotlinx-benchmark = "0.4.14"
 krid = "0.0.2-SNAPSHOT"
 jgrapht = "1.5.2"
-junit = "5.11.4"
+junit = "1.11.0"
 spring-boot = "3.5.3"
 
 [plugins]
@@ -37,3 +37,5 @@ junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform
 
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot" }
+spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
+springdoc-starter-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.5.0" }

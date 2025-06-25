@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: one-armed-bandit
+
+server:
+  port: 27489
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    try-it-out-enabled: true
+    path: /
