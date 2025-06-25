@@ -1,10 +1,10 @@
 [versions]
 aoc-kotlin = "1.1.2"
-arrow = "2.0.0"
+arrow = "2.1.2"
 flexmark = "0.64.8"
 kaliningraph = "0.2.1"
 kotlin = "2.2.0"
-kotlinx-benchmark = "0.4.13"
+kotlinx-benchmark = "0.4.14"
 krid = "0.0.2-SNAPSHOT"
 jgrapht = "1.5.2"
 junit = "5.11.4"
