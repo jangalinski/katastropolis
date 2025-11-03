@@ -1,6 +1,6 @@
 [versions]
 aoc-kotlin = "1.1.2"
-arrow = "2.1.2"
+arrow = "2.2.0"
 flexmark = "0.64.8"
 kaliningraph = "0.2.1"
 kotlin = "2.2.21"
