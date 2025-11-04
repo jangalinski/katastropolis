@@ -24,4 +24,4 @@ A place where my mind wanders to solve coding-katas and -challenges - using kotl
 ## Links/Resources
 
 * https://github.com/Zordid/adventofcode-kotlin-2024
-
+* [Copilot Course](https://github.com/TheDevPath/github-copilot-crash-course)

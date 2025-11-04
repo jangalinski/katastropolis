@@ -1,6 +1,20 @@
 package io.github.jangalinski.kata.onearmedbandit.domain
 
 import java.util.Random
+import java.util.UUID
+
+/**
+ * Value class representing the player's money (coins) in the game.
+ * Encapsulates an integer value and provides type safety for all coin operations.
+ */
+@JvmInline
+value class Coin(val value: Int) {
+    init {
+        require(value >= 0) { "Coin value must not be negative." }
+    }
+    operator fun plus(other: Coin) = Coin(this.value + other.value)
+    operator fun minus(other: Coin) = Coin((this.value - other.value).coerceAtLeast(0))
+}
 
 /**
  * Represents a single slot wheel symbol with its payout value.
@@ -43,5 +57,12 @@ data class SlotResult(val first: SlotWheel, val second: SlotWheel, val third: Sl
     /**
      * Returns the payout for this result. If all three symbols are equal, returns the payout value of the symbol, otherwise 0.
      */
-    fun payout(): Int = if (first == second && second == third) first.payout else 0
+    val payout: Int by lazy { if (first == second && second == third) first.payout else 0 }
 }
+
+/**
+ * Value class representing the unique identifier of a game.
+ * Wraps a [UUID] to provide type safety and domain clarity for game IDs.
+ */
+@JvmInline
+value class GameId(val value: UUID)
