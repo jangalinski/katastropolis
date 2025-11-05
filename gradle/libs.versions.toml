@@ -39,7 +39,7 @@ junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot" }
 spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
-springdoc-starter-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.8.13" }
+springdoc-starter-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.8.14" }
 
 timefold-solver-core = { group = "ai.timefold.solver", name = "timefold-solver-core", version.ref = "timefold" }
 timefold-solver-test = { group = "ai.timefold.solver", name = "timefold-solver-test", version.ref = "timefold" }
