@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.gradle.language.jvm.tasks.ProcessResources
 import org.gradle.api.file.DuplicatesStrategy
+import org.gradle.api.tasks.testing.Test
 
 group = "io.github.jangalinski.kata"
 version = "0.0.1-SNAPSHOT"
@@ -17,6 +18,17 @@ plugins {
 
 allprojects {
   apply(from = file("${rootProject.rootDir}/gradle/repositories.gradle.kts"))
+
+  // Provide Byte Buddy agent for Mockito inline mock-maker to avoid JDK warnings and future breakage
+  val byteBuddyAgent by configurations.creating
+  dependencies {
+    add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.17.7")
+  }
+
+  tasks.withType<Test>().configureEach {
+    // Add Byte Buddy as a Java agent so Mockito doesn't need to self-attach
+    jvmArgs("-javaagent:${configurations.getByName("byteBuddyAgent").singleFile}")
+  }
 
   plugins.apply {
 

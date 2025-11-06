@@ -103,3 +103,32 @@ Examples:
 Notes:
 - Keeps the existing regex for integers/decimals with optional leading minus.
 - BigDecimal equality is scale-sensitive; callers and tests should expect 2-decimal scale now.
+
+
+### 2025-11-07T0030 — Configure Byte Buddy agent globally for Mockito inline mock-maker
+
+- Problem: Running tests (e.g., `ResolveTaxRatesTest`) showed warnings that Mockito is self-attaching the inline-mock-maker via Byte Buddy, which will be disallowed by default in future JDK releases.
+- Solution: Configure a Java agent globally in the root `build.gradle.kts` so all `Test` tasks run with a Java agent and Mockito doesn’t need to self-attach.
+
+Where: `build.gradle.kts` (root)
+
+Snippet:
+```kotlin
+allprojects {
+  // Provide Byte Buddy agent for Mockito inline mock-maker to avoid JDK warnings and future breakage
+  val byteBuddyAgent by configurations.creating
+  dependencies {
+    add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.17.7")
+  }
+
+  tasks.withType<Test>().configureEach {
+    // Add Byte Buddy as a Java agent so Mockito doesn't need to self-attach
+    jvmArgs("-javaagent:${configurations.getByName("byteBuddyAgent").singleFile}")
+  }
+}
+```
+
+Notes:
+- This applies to all subprojects’ `Test` tasks.
+- Keeps repos and versions centralized via existing repository definitions.
+- Eliminates the self-attach warnings and is forward-compatible with future JDK changes.
