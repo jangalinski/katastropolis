@@ -56,6 +56,7 @@ class ResolveTaxRatesTest {
       "true; 19; 119; [100]",
       "false; 19; 119; [10]",
       "true; 26.00; 226.00; [100.00, 100.00]",
+      "true; 45.00; 345.00; [200.00, 100.00]",
     ], nullValues = ["null"], delimiterString = ";"
   )
   fun `resolve tax rates`(
