@@ -13,10 +13,10 @@ import java.math.BigDecimal
 @PlanningSolution
 class NetAmountWithTaxList @JvmOverloads constructor(
   @PlanningEntityCollectionProperty
-  val values: MutableList<NetAmountWithTax> = mutableListOf(),
+  val values: List<NetAmountWithTax> = listOf(),
   @ProblemFactProperty
   val total : Total = Total(TaxAmount(BigDecimal.ZERO), GrossAmount(BigDecimal.ZERO))
-) : MutableList<NetAmountWithTax> by values {
+) : List<NetAmountWithTax> by values {
 
   data class Total(
     val totalTax: TaxAmount,

@@ -24,7 +24,7 @@ class TaxRateConstraintProvider() : ConstraintProvider {
   private fun minimizeTotalGross(cf: ConstraintFactory): Constraint =
     cf.forEach(NetAmountWithTax::class.java)
       .groupBy(sumBigDecimal { it.grossAmount.amount })
-      .penalize(HardSoftScore.ONE_SOFT) { totalGross -> totalGross.intValueExact() }
+      .penalize(HardSoftScore.ONE_SOFT) { totalGross -> totalGross.toInt() }
       .asConstraint("Minimize total gross")
 
 }
