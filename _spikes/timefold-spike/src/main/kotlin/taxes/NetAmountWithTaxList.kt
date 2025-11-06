@@ -29,13 +29,14 @@ class NetAmountWithTaxList @JvmOverloads constructor(
   val taxRates = listOf(TaxRate.PCT_07, TaxRate.PCT_19)
 
   @PlanningScore
-  lateinit var score: HardSoftScore
+  var score: HardSoftScore = HardSoftScore.ZERO
 
   val sumNetAmount: NetAmount get() = NetAmount(values.sumOf { it.netAmount.amount })
   val sumTaxAmount: TaxAmount get() = TaxAmount(values.sumOf { it.taxAmount.amount })
   val sumGrossAmount: GrossAmount get() = GrossAmount(values.sumOf { it.grossAmount.amount })
   override fun toString(): String {
-    return "NetAmountWithTaxList(total=$total, values=$values, score=$score, sumNetAmount=$sumNetAmount, sumTaxAmount=$sumTaxAmount, sumGrossAmount=$sumGrossAmount, taxRates=$taxRates)"
+    // Avoid touching derived amounts here because entities may not be fully initialized when toString() is called by the solver/setup.
+    return "NetAmountWithTaxList(total=$total, valuesCount=${values.size}, score=$score, taxRates=$taxRates)"
   }
 
 
