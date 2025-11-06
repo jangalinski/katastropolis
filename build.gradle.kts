@@ -16,6 +16,15 @@ allprojects {
         languageVersion.set(JavaLanguageVersion.of(21))
       }
     }
+
+    // Provide SLF4J backend (Logback) by default for all projects with Java/Kotlin
+    // Adds provider on main and test runtime classpaths
+    val catalogs = project.extensions.getByType<org.gradle.api.artifacts.VersionCatalogsExtension>()
+    val libsCatalog = catalogs.named("libs")
+    project.dependencies.apply {
+      add("runtimeOnly", libsCatalog.findLibrary("logback-classic").get())
+      add("testRuntimeOnly", libsCatalog.findLibrary("logback-classic").get())
+    }
   }
   plugins.withType<KotlinPluginWrapper> {
     extensions.configure<KotlinJvmProjectExtension>("kotlin") {
