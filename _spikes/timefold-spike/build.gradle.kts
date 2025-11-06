@@ -12,6 +12,7 @@ dependencies {
   // Use JUnit 5 (Jupiter) BOM and engine
   testImplementation(platform("org.junit:junit-bom:6.0.1"))
   testImplementation("org.junit.jupiter:junit-jupiter")
+  testImplementation(libs.assertj.core)
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

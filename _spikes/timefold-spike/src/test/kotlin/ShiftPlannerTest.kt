@@ -14,8 +14,10 @@ import ai.timefold.solver.core.api.score.stream.Joiners.equal
 import ai.timefold.solver.core.api.solver.SolverFactory
 import ai.timefold.solver.core.config.solver.SolverConfig
 import ai.timefold.solver.test.api.score.stream.ConstraintVerifier
+import ai.timefold.solver.test.api.score.stream.ConstraintVerifier.build
 import org.junit.jupiter.api.Test
 import org.junit.platform.commons.logging.LoggerFactory
+import java.text.DateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import kotlin.time.Duration.Companion.seconds
@@ -46,6 +48,8 @@ class Shift() {
   ) {
     this.employee = employee
   }
+
+  override fun toString() = "Shift(employee=${employee.name}, skill=$requiredSkill, start=$start, end=$end)"
 }
 
 @PlanningSolution
@@ -64,6 +68,7 @@ class ShiftSchedule() {
     this.employees = employees
     this.shifts = shifts
   }
+
 }
 
 class ShiftScheduleConstraintProvider : ConstraintProvider {
@@ -75,10 +80,10 @@ class ShiftScheduleConstraintProvider : ConstraintProvider {
   fun atMostOneShiftPerDay(constraintFactory: ConstraintFactory): Constraint = constraintFactory.forEach(Shift::class.java)
     .join(
       Shift::class.java,
-      equal({ shift -> shift.start.toLocalDate() }),
+      equal { it.start.toLocalDate() },
       equal(Shift::employee)
     )
-    .filter({ shift1, shift2 -> shift1 !== shift2 })
+    .filter { shift1, shift2 -> shift1 !== shift2 }
     .penalize(HardSoftScore.ONE_HARD)
     .asConstraint("At most one shift per day")
 
@@ -95,17 +100,16 @@ class ShiftPlannerTest {
   val MONDAY: LocalDate = LocalDate.of(2030, 4, 1)
   val TUESDAY: LocalDate = LocalDate.of(2030, 4, 2)
 
-  val constraintVerifier
-    : ConstraintVerifier<ShiftScheduleConstraintProvider, ShiftSchedule> =
-    ConstraintVerifier.build(
-      ShiftScheduleConstraintProvider(),
-      ShiftSchedule::class.java,
-      Shift::class.java
-    )
+  val constraintVerifier: ConstraintVerifier<ShiftScheduleConstraintProvider, ShiftSchedule> = build(
+    ShiftScheduleConstraintProvider(),
+    ShiftSchedule::class.java,
+    Shift::class.java
+  )
 
   @Test
   fun whenTwoShiftsOnOneDay_thenPenalize() {
     val ann = Employee("Ann")
+
     constraintVerifier
       .verifyThat(ShiftScheduleConstraintProvider::atMostOneShiftPerDay)
       .given(
@@ -182,8 +186,8 @@ class ShiftPlannerTest {
     val solution = solver.solve(problem)
 
     logger.info { "Shift assignments" }
-    solution.shifts.forEach {
-      logger.info { "${it.employee.name}: ${it.start.toLocalDate()}: ${it.start.toLocalTime()} - ${it.end.toLocalTime()}" }
+    solution.shifts.forEach{
+      logger.info { it.toString() }
     }
   }
 }

@@ -8,6 +8,7 @@ kotlinx-benchmark = "0.4.14"
 krid = "0.0.2-SNAPSHOT"
 jgrapht = "1.5.2"
 junit = "6.0.1"
+assertj = "3.27.6"
 spring-boot = "3.5.7"
 timefold = "1.27.0"
 
@@ -36,6 +37,7 @@ krid = { group = "io.toolisticon.lib", name = "krid", version.ref = "krid" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
 junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit" }
 
+
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot" }
 spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
@@ -43,3 +45,5 @@ springdoc-starter-ui = { group = "org.springdoc", name = "springdoc-openapi-star
 
 timefold-solver-core = { group = "ai.timefold.solver", name = "timefold-solver-core", version.ref = "timefold" }
 timefold-solver-test = { group = "ai.timefold.solver", name = "timefold-solver-test", version.ref = "timefold" }
+
+assertj-core = { group = "org.assertj", name = "assertj-core", version.ref = "assertj" }
