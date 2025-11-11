@@ -9,8 +9,7 @@ import ai.timefold.solver.core.api.score.stream.ConstraintProvider
 class TaxRateConstraintProvider() : ConstraintProvider {
 
   override fun defineConstraints(constraintFactory: ConstraintFactory): Array<Constraint> = arrayOf(
-    matchTargetTotalGross(constraintFactory),
-    minimizeTotalGross(constraintFactory)
+    matchTargetTotalGross(constraintFactory)
   )
 
   private fun matchTargetTotalGross(cf: ConstraintFactory): Constraint =
@@ -20,11 +19,4 @@ class TaxRateConstraintProvider() : ConstraintProvider {
       .filter { totalGross, target -> totalGross.compareTo(target.totalGross.amount) != 0 }
       .penalize(HardSoftScore.ONE_HARD)
       .asConstraint("Match target total gross")
-
-  private fun minimizeTotalGross(cf: ConstraintFactory): Constraint =
-    cf.forEach(NetAmountWithTax::class.java)
-      .groupBy(sumBigDecimal { it.grossAmount.amount })
-      .penalize(HardSoftScore.ONE_SOFT) { totalGross -> totalGross.toInt() }
-      .asConstraint("Minimize total gross")
-
 }

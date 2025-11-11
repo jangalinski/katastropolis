@@ -29,3 +29,6 @@ gradle-app.setting
 build/
 .aocToken
 .aocCache/
+
+*.wav
+
