@@ -24,7 +24,7 @@ dependencies {
   testImplementation("org.pitest.voices:en_us:0.0.8")
 
   // runtime for onnx models
-  testImplementation("com.microsoft.onnxruntime:onnxruntime:1.22.0")
+  testImplementation("com.microsoft.onnxruntime:onnxruntime:1.23.2")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
