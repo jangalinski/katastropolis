@@ -17,14 +17,14 @@ dependencies {
   testImplementation("org.assertj:assertj-core:3.27.6")
 
   // main dependency
-  testImplementation("org.pitest.voices:0.0.8")
+//  testImplementation("org.pitest.voices:0.0.8")
   // a prepackaged model
-  testImplementation("org.pitest.voices:alba:0.0.8")
+//  testImplementation("org.pitest.voices:alba:0.0.8")
   // dictionary of pronunciations
-  testImplementation("org.pitest.voices:en_us:0.0.8")
+//  testImplementation("org.pitest.voices:en_us:0.0.8")
 
   // runtime for onnx models
-  testImplementation("com.microsoft.onnxruntime:onnxruntime:1.23.2")
+  //testImplementation("com.microsoft.onnxruntime:onnxruntime:1.23.2")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
