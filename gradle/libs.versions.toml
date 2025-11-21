@@ -10,7 +10,7 @@ krid = "0.0.2-SNAPSHOT"
 jgrapht = "1.5.2"
 junit = "6.0.1"
 assertj = "3.27.6"
-spring-boot = "3.5.7"
+spring-boot = "4.0.0"
 timefold = "1.28.0"
 logback = "1.5.21"
 
