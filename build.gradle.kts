@@ -22,7 +22,7 @@ allprojects {
   // Provide Byte Buddy agent for Mockito inline mock-maker to avoid JDK warnings and future breakage
   val byteBuddyAgent by configurations.creating
   dependencies {
-    add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.1")
+    add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.2")
   }
 
   tasks.withType<Test>().configureEach {
