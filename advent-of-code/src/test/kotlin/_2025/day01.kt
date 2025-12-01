@@ -45,29 +45,6 @@ class Aoc2025_01Test {
 
   @Test
   fun gold() {
-    val input = read()
-    val s = sequence {
-      input.fold(50) { acc, (d, v) ->
-        if (v >= 100) {
-          yield((v / 100))
-        }
-        val va = v % 100
-        val s = acc + (if (d == "R") va else -va)
-
-        if (s < 0 || s > 99) {
-          yield(1)
-        }
-
-        (if (s >= 0) s else s + 100) % 100
-      }
-    }
-
-    println(s.sum())
-
-  }
-
-  @Test
-  fun name() {
     val clicks = read().flatMap { p -> IntArray(p.second) { if (p.first == "R") 1 else -1 }.toList() }
 
     val s = sequence {
