@@ -32,3 +32,7 @@ build/
 
 *.wav
 
+.env.local
+
+
+advent-of-code/src/main/resources/_2025

@@ -21,6 +21,7 @@ import io.toolisticon.lib.krid.model.step.Direction.UP
 import io.toolisticon.lib.krid.model.step.Direction.UP_LEFT
 import io.toolisticon.lib.krid.model.step.Direction.UP_RIGHT
 
+
 object AocUtil {
 
   operator fun MatchResult.get(name: String): Long = this.groups[name]?.value?.toLong() ?: 0L

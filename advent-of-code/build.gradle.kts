@@ -1,9 +1,5 @@
 import kotlinx.benchmark.gradle.JvmBenchmarkTarget
 
-apply {
-  from("${rootProject.rootDir}/gradle/repositories.gradle.kts")
-}
-
 plugins {
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.kotlin.allopen)
