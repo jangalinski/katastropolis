@@ -1,10 +1,53 @@
 import kotlinx.benchmark.gradle.JvmBenchmarkTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
+
 
 plugins {
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.kotlin.allopen)
   alias(libs.plugins.kotlinx.benchmark)
 }
+
+plugins.apply {
+
+  withType<JavaPlugin> {
+    extensions.configure<JavaPluginExtension>("java") {
+      toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+      }
+    }
+
+    // Copy shared logback.xml into each project's resources during processing
+    tasks.withType<ProcessResources>().configureEach {
+      from(rootProject.layout.projectDirectory.dir("gradle/shared")) {
+        include("logback.xml")
+        into("")
+      }
+      // In case some projects also provide their own logback.xml, keep both
+      duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
+    // Provide SLF4J backend (Logback) by default for all projects with Java/Kotlin
+    // Adds provider on main and test runtime classpath
+    val catalogs = project.extensions.getByType<VersionCatalogsExtension>()
+    val libsCatalog = catalogs.named("libs")
+    project.dependencies.apply {
+      add("runtimeOnly", libsCatalog.findLibrary("logback-classic").get())
+      add("testRuntimeOnly", libsCatalog.findLibrary("logback-classic").get())
+    }
+  }
+
+  withType<KotlinPluginWrapper> {
+    extensions.configure<KotlinJvmProjectExtension>("kotlin") {
+      jvmToolchain(21)
+      compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict")
+      }
+    }
+  }
+}
+
 
 dependencies {
   implementation(libs.arrow.core)
@@ -19,6 +62,11 @@ dependencies {
   implementation(libs.jgrapht.core)
 
   implementation(libs.aoc.kotlin)
+
+
+  val byteBuddyAgent by configurations.creating
+  add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.2")
+
 
   testImplementation(platform("org.junit:junit-bom:6.0.1"))
   testImplementation("org.junit.jupiter:junit-jupiter")
@@ -52,6 +100,8 @@ kotlin {
 
 tasks.test {
   useJUnitPlatform()
+  // Add Byte Buddy as a Java agent so Mockito doesn't need to self-attach
+  jvmArgs("-javaagent:${configurations.getByName("byteBuddyAgent").singleFile}")
   testLogging {
     events("passed", "skipped", "failed")
   }
