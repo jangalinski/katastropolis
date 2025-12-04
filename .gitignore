@@ -35,4 +35,4 @@ build/
 .env.local
 
 
-advent-of-code/src/main/resources/_2025
+_2025/

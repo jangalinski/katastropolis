@@ -244,6 +244,7 @@ object AocUtil {
 
 typealias Chrid=Krid<Char>
 typealias IntKrid=Krid<Int>
+typealias BooleanKrid=Krid<Boolean>
 
 typealias IntPair = Pair<Int, Int>
 typealias LongPair = Pair<Long, Long>
