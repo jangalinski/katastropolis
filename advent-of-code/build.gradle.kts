@@ -54,11 +54,14 @@ dependencies {
   implementation(libs.arrow.fx.coroutines)
   implementation(libs.arrow.functions)
 
+  implementation(libs.timefold.solver.core)
+  implementation(libs.kotlin.logging)
   implementation(libs.flexmark.html2md.converter)
 
   implementation(libs.krid)
   implementation(libs.kotlinx.benchmark.runtime)
   implementation(libs.kaliningraph)
+  implementation(libs.kotlin.graphs)
   implementation(libs.jgrapht.core)
 
   implementation(libs.aoc.kotlin)
@@ -68,6 +71,7 @@ dependencies {
   add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.2")
 
 
+  testImplementation(libs.timefold.solver.test)
   testImplementation(platform("org.junit:junit-bom:6.0.1"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation("org.assertj:assertj-core:3.27.6")

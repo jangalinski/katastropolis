@@ -67,5 +67,5 @@ fun main() {
   }
 
 //  fun gold(): List<Set<Triple<Long, Long, Long>>> = allPairs().toList()
-//  println(gold())
+  allPairs().forEach { println(it) }
 }

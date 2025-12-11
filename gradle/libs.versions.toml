@@ -13,7 +13,7 @@ assertj = "3.27.6"
 spring-boot = "4.0.0"
 timefold = "1.28.0"
 logback = "1.5.21"
-
+kotlin-graphs = "0.6.1"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -34,6 +34,8 @@ flexmark-html2md-converter = { group = "com.vladsch.flexmark", name = "flexmark-
 
 jgrapht-core = { group = "org.jgrapht", name = "jgrapht-core", version.ref = "jgrapht" }
 kaliningraph = { group = "ai.hypergraph", name = "kaliningraph-jvm", version.ref = "kaliningraph" }
+kotlin-graphs = { group = "io.github.alexandrepiveteau", name = "kotlin-graphs", version.ref = "kotlin-graphs" }
+
 kotlinx-benchmark-runtime = { group = "org.jetbrains.kotlinx", name = "kotlinx-benchmark-runtime", version.ref = "kotlinx-benchmark" }
 krid = { group = "io.toolisticon.lib", name = "krid", version.ref = "krid" }
 
