@@ -12,7 +12,7 @@ junit = "6.0.1"
 assertj = "3.27.6"
 spring-boot = "4.0.1"
 timefold = "1.29.0"
-logback = "1.5.22"
+logback = "1.5.23"
 kotlin-graphs = "0.6.1"
 
 [plugins]
