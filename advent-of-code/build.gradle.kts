@@ -68,7 +68,7 @@ dependencies {
 
 
   val byteBuddyAgent by configurations.creating
-  add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.2")
+  add("byteBuddyAgent", "net.bytebuddy:byte-buddy-agent:1.18.3")
 
 
   testImplementation(libs.timefold.solver.test)
