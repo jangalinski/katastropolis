@@ -14,7 +14,7 @@ plugins.apply {
   withType<JavaPlugin> {
     extensions.configure<JavaPluginExtension>("java") {
       toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(25))
       }
     }
 
@@ -40,9 +40,12 @@ plugins.apply {
 
   withType<KotlinPluginWrapper> {
     extensions.configure<KotlinJvmProjectExtension>("kotlin") {
-      jvmToolchain(21)
+      jvmToolchain(25)
       compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict")
+        freeCompilerArgs.addAll(
+          "-Xjsr305=strict",
+          "-Xcontext-parameters"
+        )
       }
     }
   }
@@ -93,13 +96,13 @@ benchmark {
   targets {
     register("main") {
       this as JvmBenchmarkTarget
-      jmhVersion = "1.21"
+      jmhVersion = "1.37"
     }
   }
 }
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(25)
 }
 
 tasks.test {

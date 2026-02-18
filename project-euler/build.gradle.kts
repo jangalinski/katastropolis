@@ -43,13 +43,13 @@ benchmark {
   targets {
     register("main") {
       this as JvmBenchmarkTarget
-      jmhVersion = "1.21"
+      jmhVersion = "1.37"
     }
   }
 }
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(25)
 }
 
 tasks.test {

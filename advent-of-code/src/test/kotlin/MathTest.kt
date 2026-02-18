@@ -1,6 +1,7 @@
 package io.github.jangalinski.kata.aoc
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
@@ -22,4 +23,16 @@ class MathTest {
     assertThat(base.pow(exponent)).isEqualTo(expected)
   }
 
+  context(sb: StringBuilder)
+  fun foo() {
+    sb.append("Hello")
+  }
+
+  @Test
+  fun name() {
+    with(StringBuilder()) {
+      foo()
+      println(this)
+    }
+  }
 }

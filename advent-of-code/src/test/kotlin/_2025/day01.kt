@@ -22,8 +22,7 @@ class Aoc2025_01Test {
   } else {
     AocUtil.Input(year = 2025, day = 1, part = 1, test).contentRaw
   }.nonEmptyLines().map {
-    val (d, v) = it.first().toString() to it.drop(1).toInt()
-    d to v.toInt()
+    it.first().toString() to it.drop(1).toInt()
   }
 
   fun List<Pair<String, Int>>.dial(start: Int = 50) = sequence {
