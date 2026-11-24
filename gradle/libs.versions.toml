@@ -14,6 +14,7 @@ spring-boot = "4.2.0"
 timefold = "1.35.0"
 logback = "1.6.8"
 kotlin-graphs = "0.6.1"
+tamboui= "0.1.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -42,6 +43,7 @@ krid = { group = "io.toolisticon.lib", name = "krid", version.ref = "krid" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
 junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit" }
 
+tamboui-bom = { group = "dev.tamboui", name = "tamboui-bom", version.ref = "tamboui" }
 
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
 logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }

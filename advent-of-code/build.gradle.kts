@@ -14,7 +14,7 @@ plugins.apply {
   withType<JavaPlugin> {
     extensions.configure<JavaPluginExtension>("java") {
       toolchain {
-        languageVersion.set(JavaLanguageVersion.of(25))
+        languageVersion.set(JavaLanguageVersion.of(21))
       }
     }
 
@@ -40,7 +40,7 @@ plugins.apply {
 
   withType<KotlinPluginWrapper> {
     extensions.configure<KotlinJvmProjectExtension>("kotlin") {
-      jvmToolchain(25)
+      jvmToolchain(21)
       compilerOptions {
         freeCompilerArgs.addAll(
           "-Xjsr305=strict",
@@ -102,7 +102,7 @@ benchmark {
 }
 
 kotlin {
-  jvmToolchain(25)
+  jvmToolchain(21)
 }
 
 tasks.test {
