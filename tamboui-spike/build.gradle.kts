@@ -25,7 +25,7 @@ dependencies {
   implementation("dev.tamboui:tamboui-jline3-backend")
 
   // Use JUnit 5 (Jupiter) BOM and engine
-  testImplementation(platform("org.junit:junit-bom:6.0.1"))
+  testImplementation(platform("org.junit:junit-bom:6.1.3"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation(libs.assertj.core)
 
