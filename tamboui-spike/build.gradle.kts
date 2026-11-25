@@ -30,7 +30,7 @@ dependencies {
   testImplementation(libs.assertj.core)
 
   // Mockito Kotlin bindings for idiomatic Kotlin mocks
-  testImplementation("org.mockito.kotlin:mockito-kotlin:6.1.0")
+  testImplementation("org.mockito.kotlin:mockito-kotlin:6.4.0")
 
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
