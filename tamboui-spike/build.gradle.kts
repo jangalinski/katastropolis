@@ -16,7 +16,7 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation(libs.kotlin.logging)
 
-  implementation(platform("dev.tamboui:tamboui-bom:0.2.0-SNAPSHOTS"))
+  implementation(platform("dev.tamboui:tamboui-bom:0.7.0"))
 
   // For Toolkit DSL (recommended)
   implementation("dev.tamboui:tamboui-toolkit")

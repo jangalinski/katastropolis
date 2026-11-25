@@ -14,7 +14,7 @@ spring-boot = "4.2.0"
 timefold = "1.35.0"
 logback = "1.6.8"
 kotlin-graphs = "0.6.1"
-tamboui= "0.1.0"
+tamboui= "0.7.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
